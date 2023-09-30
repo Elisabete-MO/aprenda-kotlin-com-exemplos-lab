@@ -2,8 +2,8 @@ enum class Nivel { BASICO, INTERMEDIARIO, DIFICIL }
 
 class Usuario(val nome: String) {
     override fun toString(): String {
-    return nome
-	}
+        return nome
+    }
 }
 
 data class ConteudoEducacional(val nome: String, val duracao: Int = 60) {
@@ -19,11 +19,11 @@ data class ConteudoEducacional(val nome: String, val duracao: Int = 60) {
             println("Conteudos registrados:")
             printAll(conteudos)
         }
-    }    
+    }
 }
 
 data class Formacao(val nome: String, val nivel: Nivel, var conteudos: MutableList<ConteudoEducacional>) {
-        companion object {
+    companion object {
         private val formacoes = mutableListOf<Formacao>()
 
         fun adicionarFormacao(formacao: Formacao) {
@@ -52,7 +52,7 @@ data class Matricula(val aluno: Usuario) {
             printAll(inscritos)
         }
     }
-        override fun toString(): String {
+    override fun toString(): String {
         return aluno.nome
     }
 }
@@ -64,7 +64,7 @@ fun <T> printAll(data: List<T>){
 }
 
 fun main() {
-    
+
     val matricula1 = Matricula(Usuario("Renato"))
     Matricula.matricular(matricula1)
 
@@ -72,16 +72,16 @@ fun main() {
     Matricula.matricular(matricula2)
 
     Matricula.listarInscritos()
-    
+
     val conteudo1 = ConteudoEducacional("Matemática I", 90)
     ConteudoEducacional.adicionarConteudo(conteudo1)
-    
+
     val conteudo2 = ConteudoEducacional("História")
     ConteudoEducacional.adicionarConteudo(conteudo2)
-    
+
     val conteudo3 = ConteudoEducacional("Matemática II", 90)
     ConteudoEducacional.adicionarConteudo(conteudo3)
-    
+
     ConteudoEducacional.listarConteudos()
 
     val formacao = Formacao("Ensino Médio", Nivel.BASICO, mutableListOf(conteudo1, conteudo2, conteudo3))
